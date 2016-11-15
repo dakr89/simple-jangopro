@@ -1,0 +1,18 @@
+  to run  server jango command
+  python manage.py  runserver
+
+  to create sub foldr/app  
+  python manage.py startapp
+
+
+  for migration
+
+  python manage.py migrate
+
+  for subfolder migration
+  python manage.py makemigrations music
+
+
+  to know  what is migartion 
+
+  python manage.py sqlmigrate music 0001(code when you run above commnad you will get (13))
