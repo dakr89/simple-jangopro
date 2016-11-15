@@ -1,5 +1,4 @@
-from django.http import Http404
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404
 from  django.shortcuts import render
 from  .models import Album
 
@@ -10,8 +9,11 @@ def index(request):
 
 # details about album function
 def details(request,album_id):
-	try:
-		album = Album.objects.get(pk=album_id)
-	except:
-		raise Http404("Album Doesnot Exist")
+	# try:
+	# 	album = Album.objects.get(pk=album_id)
+	# except:
+	# 	raise Http404("Album Doesnot Exist")
+	#  instead of writing 404 again and again use builtin get_objecct_or_404 
+
+	album = get_object_or_404(Album,pk=album_id)
 	return render(request, 'music/details.html', {'album':album})
