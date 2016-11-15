@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Album </title>
+<style type="text/css">
+	
+
+</style>
+</head>
+<body >
+<div>
+	
+<ul>
+
+	{% for album in all_albums %}
+	<li><a href="/music/{{album.id}}">{{album.album_title}}</li>
+	{% endfor %}
+
+
+</ul>
+
+</div>
+</body>
+</html>
