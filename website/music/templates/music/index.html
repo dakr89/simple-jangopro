@@ -1,24 +1,16 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Album </title>
-<style type="text/css">
-	
+{% extends 'music/navbar.html'%}
+{% block title %} Albums {% endblock%}
+{% block body %}
+	{% if all_albums %}
+		<h2>Here is Album list</h2>
+		<ul>
+			{% for album in all_albums %}
+			<li><a href="{% url 'music:details' album.id %}">{{album.album_title}}</li>
+			{% endfor %}
 
-</style>
-</head>
-<body >
-<div>
-<h2>Here is Album list</h2>
-<ul>
+		</ul>
+	{% else %}
+	<h2> You don't have any albums</h2>
+	{% endif %}
 
-	{% for album in all_albums %}
-	<li><a href="{% url 'music:details' album.id %}">{{album.album_title}}</li>
-	{% endfor %}
-
-
-</ul>
-
-</div>
-</body>
-</html>
+{% endblock %}

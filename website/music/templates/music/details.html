@@ -1,4 +1,29 @@
+{% extends 'music/navbar.html'%}
+{% block title %} Songs Details {% endblock%}
+{% block body %}
 
 <img src="{{album.album_logo}}">
 <h2> {{album.album_title}} </h2>
 <h2> {{album.artist}} </h2>
+
+{% if error_message %}
+<p><strong>{{error_message}}</strong></p>
+{% endif %}
+<form action="{% url 'music:faviroute' album.id %}" method="post">
+{%csrf_token%}
+{% for song in album.songs_set.all %}
+{{songs.id}}
+	<input type="radio" id="song{{forloop.counter}}" name="song" value="{{songs.id}}"/>
+	<label for="song{{forloop.counter}}">
+		{{song.song_title}}
+		{% if song.is_faviroute %}
+			<img src="https://s3.amazonaws.com/ionic-marketplace/ionicratings/screenshot_1.png">
+		{% endif %}
+	</label><br>
+
+{% endfor %}
+	
+<input type="submit" value="faviroute">
+</form>
+
+{% endblock %}

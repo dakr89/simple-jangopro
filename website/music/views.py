@@ -17,3 +17,15 @@ def details(request,album_id):
 
 	album = get_object_or_404(Album,pk=album_id)
 	return render(request, 'music/details.html', {'album':album})
+
+
+def faviroute(request,album_id):
+	album = get_object_or_404(Album,pk=album_id)
+	try:
+		selected_song = album.songs_set.get(pk=request.POST['song'])
+	except(KeyError):
+		return render(request, 'music/details.html', {'album':album, 'error_message':'Select Some Thing'})
+	else:
+		selected_song.is_faviroute = True
+		selected_song.save()
+		return render(request, 'music/details.html', {'album':album})
