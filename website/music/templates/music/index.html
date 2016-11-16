@@ -1,11 +1,11 @@
-{% extends 'music/navbar.html'%}
+{% extends 'music/navbar.html' %}
 {% block title %} Albums {% endblock%}
 {% block body %}
 	{% if all_albums %}
 		<h2>Here is Album list</h2>
 		<ul>
 			{% for album in all_albums %}
-			<li><a href="{% url 'music:details' album.id %}">{{album.album_title}}</li>
+			<li><a href="{% url 'music:details' album.id %}"> {{album.album_title}}</li>
 			{% endfor %}
 
 		</ul>
